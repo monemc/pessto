@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>PESTO | Итальянская Кухня в Ташкенте</title>
+    <meta name="description"
+        content="PESTO — премиальный итальянский ресторан в сердце Ташкента. Авторская кухня, домашняя паста, дровяная пицца.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+    /* ============================================
+    PESTO — Premium Brand Design System
+    Brand Identity: Navy + Forest Green + Gold
+    Matching @pesto_uz Instagram vibe
+    ============================================ */
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+    --bg: #F5F2EC;
+    --bg-warm: #EBE6DC;
+    --bg-dark: #0C1B2A;
+    --bg-section: #E2DDD4;
+    --text-primary: #0C1B2A;
+    --text-secondary: #4A5568;
+    --text-light: #8B9AAF;
+    --accent: #D4AF37;
+    --accent-dark: #B48C2E;
+    --green: #3D7A4A;
+    --green-dark: #2D5A3A;
+    --cream: #FAF9F6;
+    --navy: #0C1B2A;
+    --line: #D1CCC5;
+    --white: #FFFFFF;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Inter', -apple-system, sans-serif;
+    --transition: cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+
+    body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-dark); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+    /* === PRELOADER === */
+    .preloader {
+    position: fixed; inset: 0; background: var(--bg-dark);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 99999; transition: opacity 0.8s var(--transition);
+    }
+    .preloader-inner { text-align: center; }
+    .preloader-leaf { font-size: 2rem; margin-bottom: 1.5rem; animation: float 2s ease-in-out infinite; }
+    .preloader-text { font-family: var(--serif); font-size: 3.5rem; color: var(--cream); letter-spacing: 12px;
+    font-weight: 300; }
+    .preloader-sub { font-size: 0.7rem; color: var(--accent); letter-spacing: 5px; text-transform: uppercase;
+    margin-top: 0.5rem; }
+    .preloader-bar { width: 120px; height: 1px; background: rgba(255,255,255,0.15); margin: 2rem auto 0; overflow:
+    hidden; border-radius: 1px; }
+    .preloader-progress { width: 0; height: 100%; background: var(--accent); animation: loadBar 1.8s var(--transition)
+    forwards; }
+
+    @keyframes loadBar { to { width: 100%; } }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+    /* === NAVBAR === */
+    .navbar {
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+    padding: 0; transition: all 0.5s var(--transition);
+    border-bottom: 1px solid transparent;
+    }
+    .navbar.scrolled {
+    background: rgba(12,27,42,0.98); backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .nav-container {
+    max-width: 1600px; margin: 0 auto; display: flex;
+    justify-content: center; align-items: center;
+    padding: 1.2rem 3%; position: relative;
+    }
+    .nav-left, .nav-right { position: absolute; top: 50%; transform: translateY(-50%); }
+    .nav-left { left: 3%; }
+    .nav-right { right: 3%; }
+    .nav-lang { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.75rem; letter-spacing: 1px;
+    transition: color 0.3s; }
+    .nav-lang:hover { color: var(--accent); }
+
+    .nav-links-left, .nav-links-right { display: flex; gap: 2.5rem; }
+    .nav-links-left { margin-right: 3rem; }
+    .nav-links-right { margin-left: 3rem; }
+    .nav-links-left a, .nav-links-right a {
+    color: var(--cream); text-decoration: none;
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 2.5px;
+    transition: color 0.3s; position: relative;
+    }
+    .nav-links-left a::after, .nav-links-right a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 1px; background: var(--accent); transition: width 0.4s var(--transition);
+    }
+    .nav-links-left a:hover::after, .nav-links-right a:hover::after { width: 100%; }
+    .nav-links-left a:hover, .nav-links-right a:hover { color: var(--accent); }
+
+    .logo-center { text-decoration: none; text-align: center; display: flex; flex-direction: column; align-items:
+    center; }
+    .logo-top { font-family: var(--serif); font-size: 1.8rem; font-weight: 600; color: var(--cream); letter-spacing:
+    8px; }
+    .logo-bottom { font-size: 0.55rem; color: rgba(255,255,255,0.6); letter-spacing: 3px; text-transform: uppercase;
+    margin-top: 2px; }
+
+    .nav-reserve-btn { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
+    color: var(--cream); border: 1px solid rgba(255,255,255,0.3); padding: 0.5rem 1.5rem; transition: all 0.3s; }
+    .nav-reserve-btn:hover { background: var(--accent); color: var(--navy); border-color: var(--accent); }
+
+    .menu-toggle { display: none; cursor: pointer; width: 28px; height: 20px; position: relative; z-index: 1001; }
+    .menu-toggle span { display: block; width: 100%; height: 1.5px; background: var(--cream); position: absolute; left: 0;
+    transition: all 0.3s; }
+    .menu-toggle span:nth-child(1) { top: 0; }
+    .menu-toggle span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+    .menu-toggle span:nth-child(3) { bottom: 0; }
+    .menu-toggle.active span:nth-child(1) { top: 50%; transform: translateY(-50%) rotate(45deg); }
+    .menu-toggle.active span:nth-child(2) { opacity: 0; }
+    .menu-toggle.active span:nth-child(3) { bottom: 50%; transform: translateY(50%) rotate(-45deg); }
+
+    /* Mobile Menu */
+    .mobile-menu {
+    position: fixed; inset: 0; background: var(--bg-dark);
+    z-index: 999; display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.5s;
+    }
+    .mobile-menu.active { opacity: 1; pointer-events: all; }
+    .mobile-menu-inner { text-align: center; }
+    .mobile-logo { font-family: var(--serif); font-size: 2rem; color: var(--cream); letter-spacing: 8px; margin-bottom:
+    3rem; }
+    .mobile-nav { display: flex; flex-direction: column; gap: 1.5rem; }
+    .mobile-nav a { color: var(--cream); text-decoration: none; font-family: var(--serif); font-size: 1.8rem;
+    font-weight: 300; transition: color 0.3s; }
+    .mobile-nav a:hover { color: var(--accent); }
+    .mobile-reserve-btn {
+    display: inline-block; margin-top: 2.5rem; padding: 0.8rem 2.5rem;
+    border: 1px solid var(--accent); color: var(--accent);
+    text-decoration: none; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase;
+    transition: all 0.3s;
+    }
+    .mobile-reserve-btn:hover { background: var(--accent); color: var(--bg-dark); }
+
+    /* === HERO === */
+    .hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; text-align:
+    center; overflow: hidden; }
+    .hero-media { position: absolute; inset: 0; }
+    .hero-img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.05); animation: heroZoom 25s
+    ease-in-out infinite alternate; }
+    @keyframes heroZoom { from { transform: scale(1.05); } to { transform: scale(1.12); } }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(26,26,24,0.3) 0%,
+    rgba(26,26,24,0.15) 40%, rgba(26,26,24,0.5) 100%); }
+    .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 0 2rem; }
+    .hero-badge { font-size: 0.65rem; letter-spacing: 5px; color: rgba(255,255,255,0.8); margin-bottom: 2rem; }
+    .hero-title { color: var(--cream); margin-bottom: 1.5rem; }
+    .hero-line-1 { display: block; font-family: var(--sans); font-size: 1rem; font-weight: 300; letter-spacing: 3px;
+    text-transform: uppercase; opacity: 0; animation: fadeUp 1s 0.5s forwards; }
+    .hero-line-2 { display: block; font-family: var(--serif); font-size: clamp(4rem, 10vw, 8rem); font-weight: 300;
+    font-style: italic; line-height: 1; opacity: 0; animation: fadeUp 1s 0.8s forwards; }
+    .hero-divider { margin: 1.5rem auto; width: 60px; opacity: 0; animation: fadeUp 1s 1s forwards; }
+    .hero-divider span { display: block; width: 100%; height: 1px; background: var(--accent); }
+    .hero-desc { font-family: var(--serif); font-size: 1.15rem; color: rgba(255,255,255,0.85); font-weight: 300;
+    font-style: italic; opacity: 0; animation: fadeUp 1s 1.2s forwards; }
+    .hero-actions { display: flex; gap: 1.5rem; justify-content: center; margin-top: 2.5rem; opacity: 0; animation:
+    fadeUp 1s 1.4s forwards; }
+    .hero-btn-primary {
+    padding: 0.85rem 2.5rem; font-size: 0.7rem; letter-spacing: 2.5px;
+    text-decoration: none; text-transform: uppercase; font-weight: 600;
+    background: var(--cream); color: var(--text-primary); transition: all 0.4s;
+    }
+    .hero-btn-primary:hover { background: var(--accent); color: var(--navy); }
+    .hero-btn-outline {
+    padding: 0.85rem 2.5rem; font-size: 0.7rem; letter-spacing: 2.5px;
+    text-decoration: none; text-transform: uppercase; font-weight: 500;
+    border: 1px solid rgba(255,255,255,0.5); color: var(--cream); transition: all 0.4s;
+    }
+    .hero-btn-outline:hover { border-color: var(--accent); background: var(--accent); color: var(--navy); }
+
+    .hero-scroll { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 2; text-align:
+    center; }
+    .hero-scroll-line { width: 1px; height: 40px; background: rgba(255,255,255,0.4); margin: 0 auto 0.5rem; animation:
+    scrollPulse 2s infinite; }
+    .hero-scroll span { font-size: 0.6rem; color: rgba(255,255,255,0.6); letter-spacing: 3px; text-transform: uppercase;
+    }
+    @keyframes scrollPulse { 0%,100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+    .hero-side-left, .hero-side-right {
+    position: absolute; bottom: 2.5rem; z-index: 2;
+    writing-mode: vertical-rl; text-orientation: mixed;
+    }
+    .hero-side-left { left: 3%; }
+    .hero-side-right { right: 3%; transform: rotate(180deg); }
+    .hero-side-left p, .hero-side-right p { font-size: 0.6rem; color: rgba(255,255,255,0.5); letter-spacing: 2px; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* === INTRO SECTION === */
+    .intro-section { padding: 8rem 5%; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .intro-container { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap:
+    3rem; align-items: center; }
+    .intro-text-side { font-family: var(--serif); font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8;
+    text-align: center; }
+    .intro-arch { border-radius: 200px 200px 0 0; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+    .intro-arch img { width: 100%; display: block; transition: transform 1s var(--transition); }
+    .intro-arch:hover img { transform: scale(1.05); }
+
+    /* === TEXT BLOCK === */
+    .text-block { padding: 6rem 5%; background: var(--bg-warm); border-bottom: 1px solid var(--line); }
+    .text-block-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+    .text-block-inner p {
+    font-family: var(--serif); font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    line-height: 1.8; color: var(--text-primary); font-weight: 400;
+    }
+
+    /* === SECTION COMMON === */
+    .section-label {
+    font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin-bottom: 1rem;
+    }
+    .section-heading {
+    font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 400; line-height: 1.15; color: var(--text-primary);
+    }
+    .section-heading em { font-style: italic; font-weight: 300; }
+    .section-subtext { font-family: var(--serif); font-size: 1.05rem; color: var(--text-secondary); font-style: italic;
+    margin-top: 1rem; }
+
+    .discover-link {
+    display: inline-flex; align-items: center; gap: 0.8rem;
+    font-size: 0.72rem; letter-spacing: 2.5px; text-transform: uppercase;
+    text-decoration: none; color: var(--text-primary); font-weight: 600;
+    border-bottom: 1px solid var(--text-primary); padding-bottom: 4px;
+    transition: all 0.3s;
+    }
+    .discover-link:hover { color: var(--accent); border-color: var(--accent); }
+    .discover-link span { transition: transform 0.3s; }
+    .discover-link:hover span { transform: translateX(5px); }
+
+    /* === MENU SECTION === */
+    .menu-discover { padding: 8rem 5%; background: var(--bg-warm); border-bottom: 1px solid var(--line); }
+    .menu-discover-header { text-align: center; margin-bottom: 3rem; }
+    .menu-filters { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 3rem; flex-wrap: wrap; }
+    .filter-chip {
+    padding: 0.5rem 1.5rem; border: 1px solid var(--line); background: transparent;
+    font-family: var(--sans); font-size: 0.75rem; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--text-secondary); cursor: pointer; transition: all 0.3s;
+    }
+    .filter-chip:hover { border-color: var(--accent); color: var(--accent); }
+    .filter-chip.active { background: var(--text-primary); border-color: var(--text-primary); color: var(--cream); }
+
+    .menu-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px,
+    1fr)); gap: 1.5rem; }
+    .menu-card {
+    background: var(--white); overflow: hidden; transition: all 0.5s var(--transition);
+    cursor: pointer; position: relative; border: 1px solid rgba(0,0,0,0.04);
+    }
+    .menu-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.08); }
+    .menu-card-img { height: 240px; overflow: hidden; position: relative; }
+    .menu-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--transition); }
+    .menu-card:hover .menu-card-img img { transform: scale(1.08); }
+    .menu-card-tag {
+    position: absolute; top: 1rem; right: 1rem; background: var(--cream);
+    padding: 0.25rem 0.8rem; font-size: 0.6rem; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--text-secondary); font-weight: 600;
+    }
+    .menu-card-body { padding: 1.5rem; }
+    .menu-card-body h3 { font-family: var(--serif); font-size: 1.4rem; font-weight: 500; margin-bottom: 0.4rem; }
+    .menu-card-body p { color: var(--text-light); font-size: 0.8rem; line-height: 1.5; margin-bottom: 1rem; }
+    .menu-card-price { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; color: var(--accent); }
+    .menu-cta { text-align: center; margin-top: 3rem; }
+
+    /* === STORY SECTION === */
+    .story-section { padding: 8rem 5%; border-bottom: 1px solid var(--line); }
+    .story-grid { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+    align-items: center; }
+    .story-img-wrapper { overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.08); }
+    .story-img-wrapper img { width: 100%; display: block; transition: transform 1s var(--transition); }
+    .story-img-wrapper:hover img { transform: scale(1.05); }
+    .story-content p { font-family: var(--serif); font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8;
+    margin-top: 1.5rem; }
+    .story-signature { font-family: var(--serif); font-size: 1.5rem; color: var(--accent); font-style: italic;
+    margin-top: 2.5rem; }
+
+    /* === CHEF SECTION === */
+    .chef-section { padding: 8rem 5%; background: var(--bg-warm); border-bottom: 1px solid var(--line); }
+    .chef-grid { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+    align-items: center; }
+    .chef-content p { font-family: var(--serif); font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8;
+    margin-top: 1.5rem; }
+    .chef-blockquote {
+    font-family: var(--serif); font-size: 1.4rem; font-style: italic; color: var(--text-primary);
+    border-left: 2px solid var(--accent); padding-left: 2rem; margin: 2.5rem 0;
+    }
+    .chef-blockquote cite { display: block; font-family: var(--sans); font-size: 0.75rem; font-style: normal;
+    letter-spacing: 2px; text-transform: uppercase; margin-top: 1rem; color: var(--accent); }
+    .chef-image img { width: 100%; display: block; filter: grayscale(30%); transition: filter 0.5s; }
+    .chef-image:hover img { filter: grayscale(0%); }
+
+    /* === GALLERY === */
+    .gallery-section { padding: 8rem 5%; border-bottom: 1px solid var(--line); }
+    .gallery-header { text-align: center; margin-bottom: 4rem; }
+    .gallery-mosaic { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 280px; gap: 1rem; }
+    .gallery-item { overflow: hidden; position: relative; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: all 0.6s var(--transition); }
+    .gallery-item:hover img { transform: scale(1.08); filter: brightness(0.85); }
+    .gi-1 { grid-column: span 2; grid-row: span 2; }
+    .gi-4 { grid-column: span 2; }
+
+    /* === BOOKING === */
+    .booking-section { padding: 8rem 5%; background: var(--bg-warm); border-bottom: 1px solid var(--line); }
+    .booking-grid { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+    .booking-left p { font-family: var(--serif); font-size: 1.05rem; color: var(--text-secondary); margin-top: 1rem;
+    line-height: 1.6; }
+    .floor-plan-mini { background: var(--cream); border-radius: 12px; padding: 0.5rem; margin-top: 2rem; box-shadow: 0
+    4px 20px rgba(0,0,0,0.04); }
+    .map-svg-mini { width: 100%; display: block; }
+    .legend { display: flex; gap: 1.5rem; margin-top: 1rem; justify-content: center; }
+    .legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: var(--text-secondary); }
+    .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+    .booking-status {
+    background: var(--bg-dark); color: var(--cream); padding: 1rem;
+    text-align: center; font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 2rem;
+    }
+    .booking-form .form-group { margin-bottom: 1.2rem; }
+    .booking-form label { display: block; font-size: 0.65rem; font-weight: 600; color: var(--text-light); margin-bottom:
+    0.4rem; letter-spacing: 1.5px; text-transform: uppercase; }
+    .booking-form input, .booking-form select {
+    width: 100%; padding: 0.9rem 1rem; border: 1px solid var(--line);
+    background: var(--white); font-family: var(--sans); font-size: 0.9rem;
+    transition: border-color 0.3s; color: var(--text-primary);
+    }
+    .booking-form input:focus, .booking-form select:focus { outline: none; border-color: var(--accent); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .btn-submit {
+    width: 100%; padding: 1rem; background: var(--text-primary);
+    border: none; color: var(--cream); font-family: var(--sans);
+    font-size: 0.72rem; letter-spacing: 2.5px; text-transform: uppercase;
+    font-weight: 600; cursor: pointer; transition: all 0.3s; margin-top: 0.5rem;
+    }
+    .btn-submit:hover { background: var(--accent); }
+
+    /* === TESTIMONIALS === */
+    .testimonials-section { padding: 8rem 5%; background: var(--bg-dark); text-align: center; }
+    .testimonials-inner { max-width: 800px; margin: 0 auto; }
+    .testimonials-inner .section-heading em { color: var(--accent); }
+    .testimonial-slide { display: none; }
+    .testimonial-slide.active { display: block; animation: fadeUp 0.6s forwards; }
+    .testimonial-slide p { font-family: var(--serif); font-size: 1.6rem; color: rgba(250,246,240,0.9); font-style:
+    italic; line-height: 1.7; margin: 2.5rem 0 1.5rem; }
+    .testimonial-slide cite { font-style: normal; color: var(--accent); font-size: 0.8rem; letter-spacing: 2px; }
+    .testimonial-dots { display: flex; gap: 0.5rem; justify-content: center; margin-top: 2rem; }
+    .testimonial-dots .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.2); cursor:
+    pointer; transition: background 0.3s; }
+    .testimonial-dots .dot.active { background: var(--accent); }
+
+    /* === FOOTER === */
+    .footer { background: var(--bg-dark); color: var(--cream); }
+    .footer-top { max-width: 1300px; margin: 0 auto; padding: 5rem 5%; display: flex; gap: 3rem; align-items:
+    flex-start; }
+    .footer-col { flex: 1; }
+    .footer-divider { width: 1px; background: rgba(255,255,255,0.1); align-self: stretch; }
+    .footer-logo { font-family: var(--serif); font-size: 1.8rem; letter-spacing: 8px; font-weight: 300; }
+    .footer-tagline { font-size: 0.65rem; color: var(--text-light); letter-spacing: 3px; margin-top: 0.3rem; }
+    .footer-col h4 { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; margin-bottom: 1rem; color:
+    var(--cream); }
+    .footer-col p { color: rgba(255,255,255,0.5); font-size: 0.85rem; line-height: 1.8; }
+    .footer-col a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.3s; }
+    .footer-col a:hover { color: var(--accent); }
+    .footer-socials { display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-socials a { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding: 2rem 5%; }
+    .footer-bottom-inner { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between;
+    align-items: center; }
+    .footer-bottom p { color: rgba(255,255,255,0.35); font-size: 0.75rem; }
+    .footer-leaf { font-size: 1.2rem; }
+
+    /* === REVEAL ANIMATION === */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s var(--transition); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 1024px) {
+    .nav-links-left, .nav-links-right, .nav-left, .nav-right { display: none; }
+    .menu-toggle { display: block; position: absolute; right: 5%; top: 50%; transform: translateY(-50%); }
+    .nav-container { justify-content: center; }
+    .intro-container { grid-template-columns: 1fr; }
+    .intro-col-left, .intro-col-right { display: none; }
+    .story-grid, .chef-grid, .booking-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .gallery-mosaic { grid-template-columns: repeat(2, 1fr); }
+    .gi-1 { grid-column: span 2; }
+    .gi-4 { grid-column: span 2; }
+    .footer-top { flex-direction: column; }
+    .footer-divider { width: 100%; height: 1px; }
+    .footer-bottom-inner { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .hero-side-left, .hero-side-right { display: none; }
+    }
+
+    @media (max-width: 600px) {
+    .hero-line-2 { font-size: 3.5rem; }
+    .hero-actions { flex-direction: column; align-items: center; }
+    .menu-grid { grid-template-columns: 1fr; }
+    .gallery-mosaic { grid-template-columns: 1fr; grid-auto-rows: 220px; }
+    .gi-1, .gi-4 { grid-column: span 1; grid-row: span 1; }
+    .form-row { grid-template-columns: 1fr; }
+    .section-heading { font-size: 2.2rem; }
+    .testimonial-slide p { font-size: 1.2rem; }
+    }
+    </style>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-leaf">🌿</div>
+            <div class="preloader-text">PESTO</div>
+            <div class="preloader-sub">Tashkent · Italy</div>
+            <div class="preloader-bar">
+                <div class="preloader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="#" class="nav-lang"><i class="fas fa-map-marker-alt"></i> Uz</a>
+            </div>
+            <nav class="nav-links-left" id="navLinksLeft">
+                <a href="#menu">МЕНЮ</a>
+                <a href="#story">О НАС</a>
+                <a href="#booking">БРОНЬ</a>
+            </nav>
+            <a href="#" class="logo-center">
+                <span class="logo-top">PESTO</span>
+                <span class="logo-bottom">Italiano · Tashkent</span>
+            </a>
+            <nav class="nav-links-right" id="navLinksRight">
+                <a href="#philosophy">ШЕФ</a>
+                <a href="#gallery">ГАЛЕРЕЯ</a>
+                <a href="#contact">КОНТАКТ</a>
+            </nav>
+            <div class="nav-right">
+                <a href="#booking" class="nav-reserve-btn">Столик</a>
+            </div>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-inner">
+            <div class="mobile-logo">PESTO</div>
+            <nav class="mobile-nav">
+                <a href="#menu">Меню</a>
+                <a href="#story">О нас</a>
+                <a href="#philosophy">Шеф</a>
+                <a href="#gallery">Галерея</a>
+                <a href="#booking">Бронь</a>
+                <a href="#contact">Контакт</a>
+            </nav>
+            <a href="#booking" class="mobile-reserve-btn">Забронировать столик</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-media">
+            <img src="img_hero.png" alt="PESTO Restaurant Interior" class="hero-img">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">EST. 2020 · TASHKENT</div>
+            <h1 class="hero-title">
+                <span class="hero-line-1">Добро пожаловать в</span>
+                <em class="hero-line-2">Pesto</em>
+            </h1>
+            <div class="hero-divider"><span></span></div>
+            <p class="hero-desc">Кухня сердца и разума — щедрость на пике творчества.</p>
+            <div class="hero-actions">
+                <a href="#menu" class="hero-btn-primary">ОТКРЫТЬ МЕНЮ</a>
+                <a href="#booking" class="hero-btn-outline">ЗАБРОНИРОВАТЬ</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <div class="hero-scroll-line"></div>
+            <span>Scroll</span>
+        </div>
+        <div class="hero-side-left">
+            <p>Tashkent, Chimkentskaya 9</p>
+        </div>
+        <div class="hero-side-right">
+            <p>+998 93 111-5005</p>
+        </div>
+    </section>
+
+    <!-- Intro / Welcome -->
+    <section class="intro-section" id="intro">
+        <div class="intro-container">
+            <div class="intro-col-left reveal">
+                <p class="intro-text-side">Добро пожаловать в Ташкент, где итальянская традиция встречает узбекское
+                    гостеприимство.</p>
+            </div>
+            <div class="intro-col-center reveal">
+                <div class="intro-arch">
+                    <img src="img_interior.png" alt="PESTO Interior">
+                </div>
+            </div>
+            <div class="intro-col-right reveal">
+                <p class="intro-text-side">С 2020 года PESTO воплощает ценности высокого творчества, вдохновения и
+                    гостеприимства.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Text Block -->
+    <section class="text-block">
+        <div class="text-block-inner reveal">
+            <p>PESTO — это серия кулинарных экспериментов, рождённых на стыке итальянской классики и современной
+                гастрономии. Философия, которая движется волной сезонов с творчеством, элегантностью и чувственностью.
+            </p>
+        </div>
+    </section>
+
+    <!-- Menu Discover -->
+    <section class="menu-discover" id="menu">
+        <div class="menu-discover-header reveal">
+            <div class="section-label">Наше Меню</div>
+            <h2 class="section-heading">Scopri il<br><em>nostro menu</em></h2>
+            <p class="section-subtext">Кухня сердца и разума — щедрость на пике творчества.</p>
+        </div>
+        <div class="menu-filters" id="menuFilters">
+            <button class="filter-chip active" data-filter="all">Все</button>
+            <button class="filter-chip" data-filter="Паста">Паста</button>
+            <button class="filter-chip" data-filter="Пицца">Пицца</button>
+            <button class="filter-chip" data-filter="Мясо">Мясо</button>
+            <button class="filter-chip" data-filter="Десерты">Десерты</button>
+            <button class="filter-chip" data-filter="Напитки">Напитки</button>
+        </div>
+        <div class="menu-grid" id="menuGrid"></div>
+        <div class="menu-cta reveal">
+            <a href="#booking" class="discover-link">ЗАБРОНИРОВАТЬ СТОЛИК <span>⟶</span></a>
+        </div>
+    </section>
+
+    <!-- Story / About -->
+    <section class="story-section" id="story">
+        <div class="story-grid">
+            <div class="story-image reveal">
+                <div class="story-img-wrapper">
+                    <img src="img_interior.png" alt="PESTO Story">
+                </div>
+            </div>
+            <div class="story-content reveal">
+                <div class="section-label">Наша история</div>
+                <h2 class="section-heading">Любовь<br>к <em>делу</em></h2>
+                <p>Pesto — это не просто ресторан. Это мечта об идеальном итальянском уголке в самом сердце Ташкента. Мы
+                    верим, что еда должна приносить радость, а атмосфера — дарить покой.</p>
+                <p>Каждый рецепт мы привезли из путешествий по Италии, чтобы вы могли почувствовать тепло Неаполя и уют
+                    Рима, не покидая города.</p>
+                <div class="story-signature">С любовью, Команда PESTO</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chef / Philosophy -->
+    <section class="chef-section" id="philosophy">
+        <div class="chef-grid">
+            <div class="chef-content reveal">
+                <div class="section-label">Шеф-повар</div>
+                <h2 class="section-heading">Баланс традиций<br>и <em>инноваций</em></h2>
+                <p>В Pesto мы не просто следуем рецептам. Мы изучаем химию вкуса, чтобы каждая нить нашей домашней пасты
+                    идеально удерживала соус, а каждый лепесток базилика раскрывал свой аромат в нужный момент.</p>
+                <blockquote class="chef-blockquote">
+                    «Истинная роскошь — это простота, доведенная до совершенства.»
+                    <cite>— Шеф-повар PESTO</cite>
+                </blockquote>
+                <a href="#menu" class="discover-link">ОТКРЫТЬ МЕНЮ <span>⟶</span></a>
+            </div>
+            <div class="chef-image reveal">
+                <img src="img_chef.png" alt="PESTO Chef">
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery-section" id="gallery">
+        <div class="gallery-header reveal">
+            <div class="section-label">Внутри PESTO</div>
+            <h2 class="section-heading">Галерея<br><em>атмосферы</em></h2>
+        </div>
+        <div class="gallery-mosaic">
+            <div class="gallery-item gi-1 reveal"><img src="img_hero.png" alt="Interior"></div>
+            <div class="gallery-item gi-2 reveal"><img src="img_pasta.png" alt="Pasta"></div>
+            <div class="gallery-item gi-3 reveal"><img src="img_pizza.png" alt="Pizza"></div>
+            <div class="gallery-item gi-4 reveal"><img src="img_interior.png" alt="Ambiance"></div>
+            <div class="gallery-item gi-5 reveal"><img src="img_tiramisu.png" alt="Dessert"></div>
+            <div class="gallery-item gi-6 reveal"><img src="img_chef.png" alt="Chef"></div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking-section" id="booking">
+        <div class="booking-grid">
+            <div class="booking-left reveal">
+                <div class="section-label">Бронирование</div>
+                <h2 class="section-heading">Ваш столик<br><em>ждёт</em></h2>
+                <p>Забронируйте столик для незабываемого ужина в атмосфере настоящей Италии.</p>
+                <div class="booking-map-mini">
+                    <div class="floor-plan-mini">
+                        <svg viewBox="0 0 500 400" class="map-svg-mini">
+                            <rect width="500" height="400" fill="#F5F2EC" rx="16" />
+                            <rect x="20" y="15" width="120" height="80" fill="#EBE6DC" rx="8" />
+                            <text x="35" y="55" fill="#4A5568" font-size="9" font-weight="bold">ТЕРРАСА</text>
+                            <rect x="160" y="15" width="320" height="180" fill="#FFFFFF" rx="8" />
+                            <text x="290" y="40" fill="#4A5568" font-size="10" font-weight="bold">ГЛАВНЫЙ ЗАЛ</text>
+                            <rect x="20" y="280" width="460" height="100" fill="#0C1B2A" rx="8" />
+                            <text x="40" y="315" fill="#D4AF37" font-size="10" font-weight="bold">VIP LOUNGE</text>
+                            <g id="tables-group"></g>
+                            <rect x="230" y="362" width="40" height="16" fill="#D4AF37" rx="4" />
+                            <text x="238" y="374" fill="#0C1B2A" font-size="7">ВХОД</text>
+                        </svg>
+                    </div>
+                    <div class="legend">
+                        <div class="legend-item">
+                            <div class="legend-dot" style="background:#D4AF37"></div><span>Свободен</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-dot" style="background:#3D7A4A"></div><span>Выбран</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-dot" style="background:#D1D1D1"></div><span>Занят</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="booking-right reveal">
+                <div class="booking-status" id="bookingStatus">Выберите столик на карте</div>
+                <form id="reservationForm" class="booking-form">
+                    <div class="form-group">
+                        <label>Ваше имя</label>
+                        <input type="text" id="name" placeholder="Имя" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Телефон</label>
+                        <input type="tel" id="phone" placeholder="+998 90 123 45 67" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Дата</label>
+                            <input type="date" id="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Время</label>
+                            <input type="time" id="time" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Количество гостей</label>
+                        <select id="guests">
+                            <option>1 гость</option>
+                            <option>2 гостя</option>
+                            <option selected>4 гостя</option>
+                            <option>6 гостей</option>
+                            <option>7+ гостей</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-submit">Подтвердить бронь</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+        <div class="testimonials-inner">
+            <div class="section-label" style="color:#D4AF37">Отзывы</div>
+            <h2 class="section-heading" style="color:#FAF9F6">Искренние<br><em>пожелания</em></h2>
+            <div class="testimonials-slider" id="testimonialSlider">
+                <div class="testimonial-slide active">
+                    <p>«В Ташкенте сложно найти такую атмосферу. Паста просто невероятная! Обязательно вернусь.»</p>
+                    <cite>— Азимжон Р.</cite>
+                </div>
+                <div class="testimonial-slide">
+                    <p>«Наше любимое место для завтрака. Кофе всегда на высоте, персонал очень внимательный.»</p>
+                    <cite>— Малика Х.</cite>
+                </div>
+                <div class="testimonial-slide">
+                    <p>«Сервис и кухня на высшем уровне. Каждый раз чувствую себя как в Италии.»</p>
+                    <cite>— Джасур Б.</cite>
+                </div>
+            </div>
+            <div class="testimonial-dots" id="testimonialDots"></div>
+        </div>
+    </section>
+
+    <!-- Contact / Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-top">
+            <div class="footer-col footer-brand">
+                <div class="footer-logo">PESTO</div>
+                <p class="footer-tagline">Italiano · Tashkent</p>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-col">
+                <p>Tashkent, ул. Чимкентская 9</p>
+                <p>T. <a href="tel:+998931115005">+998 93 111-5005</a></p>
+                <p>M. <a href="mailto:info@pesto.uz">info@pesto.uz</a></p>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-col">
+                <h4>Часы работы</h4>
+                <p>Пн—Пт: 10:00 — 23:00</p>
+                <p>Сб—Вс: 11:00 — 00:00</p>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-col">
+                <h4>Подписывайтесь</h4>
+                <div class="footer-socials">
+                    <a href="https://instagram.com/pesto_uz" target="_blank"><i class="fab fa-instagram"></i>
+                        Instagram</a>
+                    <a href="#"><i class="fab fa-telegram"></i> Telegram</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-inner">
+                <p>&copy; 2026 Pesto Cafe. Все права защищены.</p>
+                <div class="footer-leaf">🌿</div>
+                <p>Crafted with love in Tashkent</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // ============================================
+    // PESTO — Premium Interactive Engine
+    // ============================================
+
+    document.addEventListener('DOMContentLoaded', () => {
+    // === PRELOADER ===
+    window.addEventListener('load', () => {
+    setTimeout(() => {
+    const preloader = document.getElementById('preloader');
+    preloader.style.opacity = '0';
+    setTimeout(() => preloader.style.display = 'none', 800);
+    }, 2000);
+    });
+
+    // === NAVBAR SCROLL ===
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 80);
+    });
+
+    // === MOBILE MENU ===
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    });
+    document.querySelectorAll('.mobile-nav a, .mobile-reserve-btn').forEach(a => {
+    a.addEventListener('click', () => {
+    menuToggle.classList.remove('active');
+    mobileMenu.classList.remove('active');
+    document.body.style.overflow = '';
+    });
+    });
+
+    // === MENU DATA & RENDERING ===
+    const menuData = [
+    { id:1, name:"Паста Помодоро", desc:"Сочные томаты, базилик, пармезан", price:"65,000", image:"img_pasta.png",
+    category:"Паста" },
+    { id:2, name:"Неаполитанская Пицца", desc:"Моцарелла Буффало, соус песто, дровяная печь", price:"75,000",
+    image:"img_pizza.png", category:"Пицца" },
+    { id:3, name:"Лазанья Болоньезе", desc:"Рагу из говядины и бешамель", price:"80,000", image:"img_pasta.png",
+    category:"Паста" },
+    { id:4, name:"Тирамису Классик", desc:"Нежный маскарпоне и кофе", price:"45,000", image:"img_tiramisu.png",
+    category:"Десерты" },
+    { id:5, name:"Стейк Рибай", desc:"Мраморная говядина, розмарин", price:"120,000", image:"img_hero.png",
+    category:"Мясо" },
+    { id:6, name:"Лимончелло Спритц", desc:"Авторский цитрусовый моктейль", price:"35,000", image:"img_tiramisu.png",
+    category:"Напитки" },
+    { id:7, name:"Фетучини Альфредо", desc:"Сливочный соус с курицей", price:"68,000", image:"img_pasta.png",
+    category:"Паста" },
+    { id:8, name:"Пицца Четыре Сыра", desc:"Горгонзола, пармезан, моцарелла", price:"72,000", image:"img_pizza.png",
+    category:"Пицца" },
+    { id:9, name:"Брауни с Лавандой", desc:"Шоколад с прованскими травами", price:"42,000", image:"img_tiramisu.png",
+    category:"Десерты" },
+    { id:10, name:"Эспрессо Премиум", desc:"Чистая арабика лучших плантаций", price:"18,000", image:"img_interior.png",
+    category:"Напитки" },
+    { id:11, name:"Карбонара", desc:"Гуанчале, желток, пекорино", price:"66,000", image:"img_pasta.png",
+    category:"Паста" },
+    { id:12, name:"Пицца Маргарита", desc:"Базилик, моцарелла, томатный соус", price:"60,000", image:"img_pizza.png",
+    category:"Пицца" },
+    ];
+
+    const menuGrid = document.getElementById('menuGrid');
+
+    function renderMenu(filter = 'all') {
+    menuGrid.innerHTML = '';
+    const items = filter === 'all' ? menuData : menuData.filter(i => i.category === filter);
+    items.forEach((item, idx) => {
+    const card = document.createElement('div');
+    card.className = 'menu-card reveal';
+    card.style.transitionDelay = `${idx * 0.05}s`;
+    card.innerHTML = `
+    <div class="menu-card-img">
+        <img src="${item.image}" alt="${item.name}" loading="lazy">
+        <span class="menu-card-tag">${item.category}</span>
+    </div>
+    <div class="menu-card-body">
+        <h3>${item.name}</h3>
+        <p>${item.desc}</p>
+        <div class="menu-card-price">${item.price} сўм</div>
+    </div>`;
+    menuGrid.appendChild(card);
+    });
+    initReveal();
+    }
+
+    document.querySelectorAll('.filter-chip').forEach(btn => {
+    btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderMenu(btn.dataset.filter);
+    });
+    });
+    renderMenu();
+
+    // === BOOKING SYSTEM ===
+    const tables = [
+    { id:'T1', x:80, y:60, vip:false }, { id:'T2', x:190, y:60, vip:false },
+    { id:'T3', x:300, y:60, vip:false }, { id:'T4', x:410, y:60, vip:false },
+    { id:'T5', x:80, y:150, vip:false }, { id:'T6', x:190, y:150, vip:false },
+    { id:'T7', x:300, y:150, vip:false }, { id:'T8', x:410, y:150, vip:false },
+    { id:'VIP', x:250, y:330, vip:true }
+    ];
+
+    let selectedTable = null;
+    let bookedTables = JSON.parse(localStorage.getItem('bookedTables') || '[]');
+
+    function renderTables() {
+    const g = document.getElementById('tables-group');
+    if (!g) return;
+    g.innerHTML = '';
+    tables.forEach(t => {
+    const booked = bookedTables.includes(t.id);
+    const selected = selectedTable === t.id;
+    const fill = booked ? '#D1D1D1' : selected ? '#3D7A4A' : '#D4AF37';
+    const ns = 'http://www.w3.org/2000/svg';
+    const c = document.createElementNS(ns, 'circle');
+    c.setAttribute('cx', t.x); c.setAttribute('cy', t.y);
+    c.setAttribute('r', t.vip ? 22 : 16);
+    c.setAttribute('fill', fill); c.setAttribute('stroke', '#0C1B2A'); c.setAttribute('stroke-width', '1.5');
+    c.style.cursor = booked ? 'not-allowed' : 'pointer';
+    c.style.transition = 'all 0.3s';
+    const txt = document.createElementNS(ns, 'text');
+    txt.setAttribute('x', t.x); txt.setAttribute('y', t.y + 4);
+    txt.setAttribute('text-anchor', 'middle');
+    txt.setAttribute('fill', booked ? '#999' : '#0C1B2A');
+    txt.setAttribute('font-size', t.vip ? 9 : 8); txt.setAttribute('font-weight', 'bold');
+    txt.textContent = t.id; txt.style.cursor = c.style.cursor;
+    if (!booked) {
+    const select = () => {
+    selectedTable = t.id;
+    document.getElementById('bookingStatus').innerHTML = `✓ Стол ${t.id} выбран`;
+    document.getElementById('bookingStatus').style.background = '#3D7A4A';
+    renderTables();
+    };
+    c.addEventListener('click', select);
+    txt.addEventListener('click', select);
+    }
+    g.appendChild(c); g.appendChild(txt);
+    });
+    }
+    renderTables();
+
+    // Form
+    const form = document.getElementById('reservationForm');
+    form.addEventListener('submit', e => {
+    e.preventDefault();
+    if (!selectedTable) return alert('Выберите столик на карте');
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const date = document.getElementById('date').value;
+    const time = document.getElementById('time').value;
+    if (!name || !phone || !date || !time) return alert('Заполните все поля');
+    bookedTables.push(selectedTable);
+    localStorage.setItem('bookedTables', JSON.stringify(bookedTables));
+    const status = document.getElementById('bookingStatus');
+    status.innerHTML = `✅ Стол ${selectedTable} забронирован!`;
+    status.style.background = '#3D7A4A';
+    form.reset(); selectedTable = null; renderTables();
+    setTimeout(() => { status.innerHTML = 'Выберите столик на карте'; status.style.background = '#0C1B2A'; }, 3500);
+    });
+
+    const dateInput = document.getElementById('date');
+    if (dateInput) dateInput.min = new Date().toISOString().split('T')[0];
+
+    // === TESTIMONIAL SLIDER ===
+    const slides = document.querySelectorAll('.testimonial-slide');
+    const dotsContainer = document.getElementById('testimonialDots');
+    let currentSlide = 0;
+
+    slides.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goToSlide(i));
+    dotsContainer.appendChild(dot);
+    });
+
+    function goToSlide(n) {
+    slides.forEach(s => s.classList.remove('active'));
+    dotsContainer.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
+    slides[n].classList.add('active');
+    dotsContainer.querySelectorAll('.dot')[n].classList.add('active');
+    currentSlide = n;
+    }
+    setInterval(() => goToSlide((currentSlide + 1) % slides.length), 5000);
+
+    // === REVEAL ON SCROLL ===
+    function initReveal() {
+    const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal:not(.visible)').forEach(el => observer.observe(el));
+    }
+    initReveal();
+
+    // === SMOOTH SCROLL ===
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    });
+    });
+    </script>
+</body>
+
+</html>
